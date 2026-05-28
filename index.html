@@ -184,6 +184,52 @@ nav {
 .aside-val { font-family: 'Instrument Serif', serif; font-size: 30px; line-height: 1; }
 .aside-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
 
+/* PROJECTS (NEW SECTION) */
+.project-card {
+  background: var(--card);
+  border: 1px solid var(--cream);
+  padding: 48px;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 40px;
+  align-items: center;
+  position: relative;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(14,14,20,0.06);
+}
+.project-info h3 {
+  font-family: 'Instrument Serif', serif;
+  font-size: 36px;
+  margin-bottom: 12px;
+  font-weight: 400;
+}
+.project-tags {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.project-tag {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--gold);
+  background: rgba(201,168,76,0.08);
+  padding: 4px 10px;
+  font-weight: 500;
+}
+.project-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.project-link-wrap {
+  text-align: right;
+}
+
 /* SKILLS */
 .skill-row {
   display: grid; grid-template-columns: 220px 1fr 60px; align-items: center; gap: 32px;
@@ -199,7 +245,8 @@ nav {
   transform: scaleX(0); transform-origin: left;
   transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
 }
-.skill-fill.go { transform: scaleX(1); }
+/* Sửa lỗi animation thanh phần trăm sử dụng biến --w */
+.skill-fill.go { transform: scaleX(var(--w)); }
 .skill-pct { font-size: 12px; color: var(--muted); text-align: right; }
 
 .skill-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
@@ -268,6 +315,8 @@ footer {
   .hero-left::after { display: none; }
   .wrapper { padding: 0 24px; }
   .about-grid { grid-template-columns: 1fr; gap: 40px; }
+  .project-card { grid-template-columns: 1fr; gap: 24px; padding: 32px 24px; }
+  .project-link-wrap { text-align: left; }
   .skill-row { grid-template-columns: 1fr; gap: 10px; }
   .skill-pct { text-align: left; }
   .hobbies-mosaic { grid-template-columns: 1fr 1fr; }
@@ -286,13 +335,13 @@ footer {
   <a href="#" class="nav-brand">Phan Hùng An</a>
   <ul class="nav-links">
     <li><a href="#about">Giới thiệu</a></li>
+    <li><a href="#projects">Dự án</a></li>
     <li><a href="#skills">Kỹ năng</a></li>
     <li><a href="#hobbies">Sở thích</a></li>
     <li><a href="#contact">Liên hệ</a></li>
   </ul>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
   <div class="hero-left">
     <div class="eyebrow reveal">
@@ -308,7 +357,7 @@ footer {
     </p>
     <div class="hero-actions reveal" style="transition-delay:.35s">
       <a href="#contact" class="btn btn-dark">Liên hệ ngay →</a>
-      <a href="#skills" class="btn btn-ghost">Xem kỹ năng</a>
+      <a href="#projects" class="btn btn-ghost">Xem dự án</a>
     </div>
   </div>
 
@@ -328,7 +377,6 @@ footer {
 
 <div class="sec-divider"><div></div></div>
 
-<!-- ABOUT -->
 <div class="wrapper">
   <section class="section" id="about">
     <div class="sec-header reveal">
@@ -338,7 +386,7 @@ footer {
     </div>
     <div class="about-grid">
       <div class="about-body reveal">
-        <p>Mình là một học sinh đam mê công nghệ, đang học lập trình và phát triển bản thân mỗi ngày. Với mình, code không chỉ là công việc — đó là ngôn ngữ để biến ý tưởng thành hiện thực.</p>
+        <p>Mình là một học sinh đam mê công nghệ, đang học lập trình và phát triển bản thân mỗi ngày. Với mình, code không chỉ là công việc — đó là ngôn ngữ để biến ý tưởng thành thực tế.</p>
         <p>Mục tiêu của mình là trở thành một <strong>lập trình viên chuyên nghiệp</strong>, đủ sức tạo ra những sản phẩm có giá trị thực sự cho người dùng. Hành trình còn dài, nhưng mỗi ngày mình đều tiến thêm một bước.</p>
       </div>
       <div class="about-aside reveal" style="transition-delay:.15s">
@@ -364,12 +412,39 @@ footer {
 
 <div class="sec-divider"><div></div></div>
 
-<!-- SKILLS -->
+<div class="wrapper">
+  <section class="section" id="projects">
+    <div class="sec-header reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Dự án nổi bật</h2>
+      <div class="sec-rule"></div>
+    </div>
+    
+    <div class="project-card reveal">
+      <div class="project-info">
+        <div class="project-tags">
+          <span class="project-tag">Web App</span>
+          <span class="project-tag">DTU Tool</span>
+          <span class="project-tag">Front-End</span>
+        </div>
+        <h3>Website Tính Điểm Duy Tân (DTU)</h3>
+        <p class="project-desc">
+          Công cụ hỗ trợ sinh viên trường Đại học Duy Tân tính toán nhanh điểm trung bình (GPA), quy đổi điểm số và lên kế hoạch học tập, cải thiện điểm một cách trực quan, chính xác.
+        </p>
+      </div>
+      <div class="project-link-wrap">
+        <a href="https://phanan-dev.github.io/tinhdiem-website/" target="_blank" class="btn btn-dark">Trải nghiệm ngay ↗</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sec-divider"><div></div></div>
+
 <div class="wrapper">
   <section class="section" id="skills">
     <div class="sec-header reveal">
-      <span class="sec-num">02</span>
-      <h2 class="sec-title">Kỹ năng</h2>
+      <span class="sec-num">03</span> <h2 class="sec-title">Kỹ năng</h2>
       <div class="sec-rule"></div>
     </div>
     <div id="skills-list" class="reveal">
@@ -401,12 +476,10 @@ footer {
 
 <div class="sec-divider"><div></div></div>
 
-<!-- HOBBIES -->
 <div class="wrapper">
   <section class="section" id="hobbies">
     <div class="sec-header reveal">
-      <span class="sec-num">03</span>
-      <h2 class="sec-title">Sở thích</h2>
+      <span class="sec-num">04</span> <h2 class="sec-title">Sở thích</h2>
       <div class="sec-rule"></div>
     </div>
     <div class="hobbies-mosaic">
@@ -446,12 +519,10 @@ footer {
 
 <div class="sec-divider"><div></div></div>
 
-<!-- CONTACT -->
 <div class="wrapper">
   <section class="section" id="contact">
     <div class="sec-header reveal">
-      <span class="sec-num">04</span>
-      <h2 class="sec-title">Liên hệ</h2>
+      <span class="sec-num">05</span> <h2 class="sec-title">Liên hệ</h2>
       <div class="sec-rule"></div>
     </div>
     <div class="contact-wrap reveal">
@@ -482,7 +553,7 @@ document.addEventListener('mousemove', e => {
   cur.style.left = e.clientX + 'px';
   cur.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a,button,.hobby-tile,.skill-row,.chip').forEach(el => {
+document.querySelectorAll('a,button,.hobby-tile,.skill-row,.chip,.project-card').forEach(el => {
   el.addEventListener('mouseenter', () => cur.classList.add('big'));
   el.addEventListener('mouseleave', () => cur.classList.remove('big'));
 });
